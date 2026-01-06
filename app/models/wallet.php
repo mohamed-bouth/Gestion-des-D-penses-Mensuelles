@@ -1,5 +1,7 @@
 <?php
 
+namespace models;
+
 class wallet {
     private $userId;
     private $budget;

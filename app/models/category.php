@@ -1,5 +1,7 @@
 <?php
 
+namespace models;
+
 class category {
     protected $id;
     protected $name;

@@ -1,0 +1,14 @@
+{
+    "name": "pc/gestion-des-dpenses-mensuelles",
+    "autoload": {
+        "psr-4": {
+            "models": "app/models"
+        }
+    },
+    "authors": [
+        {
+            "name": "mohamed"
+        }
+    ],
+    "require": {}
+}

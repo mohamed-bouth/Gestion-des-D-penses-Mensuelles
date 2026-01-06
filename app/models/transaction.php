@@ -1,5 +1,7 @@
 <?php
 
+namespace models;
+
 abstract class transaction {
     protected $userID;
     protected $date;

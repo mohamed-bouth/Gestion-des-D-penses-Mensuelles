@@ -4,6 +4,12 @@
  * Gère la connexion à la base de données
  */
 
+namespace models;
+
+use PDO;
+use PDOException;
+use PDOStatement;
+
 class Database {
     private static $instance = null;
     private $connection;
