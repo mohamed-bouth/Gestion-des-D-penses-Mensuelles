@@ -4,7 +4,7 @@
  */
 
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'quiz_platform');
+define('DB_NAME', 'wallet_platform');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_CHARSET', 'utf8mb4');

@@ -2,7 +2,9 @@
     "name": "pc/gestion-des-dpenses-mensuelles",
     "autoload": {
         "psr-4": {
-            "models": "app/models"
+            "models\\": "app/Models/",
+            "repos\\": "app/Repositories/",
+            "Controllers\\": "app/Controllers/"
         }
     },
     "authors": [
