@@ -2,8 +2,8 @@
     "name": "pc/gestion-des-dpenses-mensuelles",
     "autoload": {
         "psr-4": {
-            "models\\": "app/Models/",
-            "repos\\": "app/Repositories/",
+            "Models\\": "app/Models/",
+            "Repositories\\": "app/Repositories/",
             "Controllers\\": "app/Controllers/"
         }
     },

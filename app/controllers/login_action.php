@@ -1,13 +1,12 @@
 <?php
 session_start();
-require_once '../../config/database.php';
-require_once '../Models/database.php';
-require_once '../Repositories/baseModel.php';
-require_once '../Models/Security.php';
-require_once '../Repositories/UserRepository.php';
 
-use models\Security;
-use repos\UserRepository;
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+
+use Models\Security;
+use Repositories\UserRepository;
+use Models\User;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'] ?? '';
@@ -30,6 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_name'] = $user['name'];
             $_SESSION['user_email'] = $user['email'];
+            $_SESSION['created_at'] = $user['created_at'];
+            $user = new User($user['id'] , $user['name'] , $user['email'] , $user['created_at']);
             header('Location: ../../app/views/main/dashboard.php');
         } else {
             $_SESSION['error'] = 'Email ou mot de passe incorrect';

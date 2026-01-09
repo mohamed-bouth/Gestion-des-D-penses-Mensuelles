@@ -1,8 +1,8 @@
 <?php
 
-namespace models;
+namespace Models;
 
-abstract class transaction {
+abstract class Transaction {
     protected $userID;
     protected $date;
     protected $montant;

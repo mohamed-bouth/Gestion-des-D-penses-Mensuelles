@@ -1,8 +1,10 @@
 <?php
 
-namespace repos;
 
-use models\Database;
+namespace Repositories;
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+use Models\Database;
 
 abstract class BaseModel {
     protected $pdo;

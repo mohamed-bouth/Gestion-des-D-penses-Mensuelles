@@ -1,5 +1,12 @@
 <?php require_once "../partials/header.php"; ?>
 <?php require_once "../partials/navbar.php"; ?>
+
+<?php
+require_once __DIR__ . '/../../../vendor/autoload.php';
+use Repositories\UserRepository;
+$userRepo = new UserRepository();
+$results = $userRepo->findByEmail($_SESSION['user_email']);
+?>
 <main class="main-content">
     <header>
         <h1>Paramètres du compte</h1>
@@ -16,7 +23,7 @@
                 <div class="form-group">
                     <label>Montant du budget (MAD)</label>
                     <div style="display:flex; gap:10px;">
-                        <input type="number" value="5000">
+                        <input type="number" value="<?= $results['id'] ?>">
                         <button class="btn btn-primary">Mettre à jour</button>
                     </div>
                 </div>

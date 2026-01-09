@@ -1,9 +1,10 @@
 <?php
 
-namespace repos;
+namespace Repositories;
+require_once __DIR__ . '/../../vendor/autoload.php';
 
-use repos\BaseModel;
-use models\Security;
+use Repositories\BaseModel;
+use Models\Security;
 
 class UserRepository extends BaseModel {
     protected $table = 'users';
@@ -35,7 +36,8 @@ class UserRepository extends BaseModel {
             return [
                 'id' => $user['id'],
                 'name' => $user['name'],
-                'email' => $user['email']
+                'email' => $user['email'],
+                'created_at' => $user['created_at']
             ];
         }
         

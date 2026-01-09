@@ -1,8 +1,8 @@
 <?php
 
-namespace models;
+namespace Models;
 
-class category {
+class Category {
     protected $id;
     protected $name;
 

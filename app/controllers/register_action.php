@@ -1,13 +1,9 @@
 <?php
 session_start();
-require_once '../../config/database.php';
-require_once '../Models/database.php';
-require_once '../Repositories/baseModel.php';
-require_once '../Models/Security.php';
-require_once '../Repositories/UserRepository.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
-use models\Security;
-use repos\UserRepository;
+use Models\Security;
+use Repositories\UserRepository;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'] ?? '';

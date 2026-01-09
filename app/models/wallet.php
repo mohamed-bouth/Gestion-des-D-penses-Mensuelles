@@ -1,8 +1,8 @@
 <?php
 
-namespace models;
+namespace Models;
 
-class wallet {
+class Wallet {
     private $userId;
     private $budget;
 

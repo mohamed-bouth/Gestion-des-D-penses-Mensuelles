@@ -4,11 +4,17 @@
  * Gère la connexion à la base de données
  */
 
-namespace models;
+namespace Models;
 
 use PDO;
 use PDOException;
 use PDOStatement;
+
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'wallet_platform');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+define('DB_CHARSET', 'utf8mb4');
 
 class Database {
     private static $instance = null;
