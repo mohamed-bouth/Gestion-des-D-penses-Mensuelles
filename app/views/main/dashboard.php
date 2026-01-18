@@ -1,9 +1,17 @@
 <?php require_once "../partials/header.php"; ?>
 <?php require_once "../partials/navbar.php"; ?>
+
+<?php 
+require_once __DIR__ . '/../../../vendor/autoload.php';
+use Models\Wallet;
+$walletObj = new wallet();
+$results = $walletObj->findByUserID($_SESSION['user_id']);
+
+?>
 <main class="main-content">
     <header>
         <div>
-            <h1>Bonjour, User 👋</h1>
+            <h1>Bonjour, <?= $_SESSION['user_name'] ?> 👋</h1>
             <p class="stat-label">Voici la situation de vos finances ce mois-ci.</p>
         </div>
         <button class="btn btn-primary"><i class="ri-add-line"></i> Nouvelle Dépense</button>
@@ -12,7 +20,7 @@
     <div class="stats-grid">
         <div class="stat-card">
             <span class="stat-label">Budget Mensuel</span>
-            <div class="stat-value">5,000 MAD</div>
+            <div class="stat-value"><?= $results['budget'] ?> MAD</div>
         </div>
         <div class="stat-card danger">
             <span class="stat-label">Total Dépensé</span>

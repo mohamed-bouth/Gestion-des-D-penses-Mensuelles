@@ -3,9 +3,9 @@
 
 <?php
 require_once __DIR__ . '/../../../vendor/autoload.php';
-use Repositories\UserRepository;
-$userRepo = new UserRepository();
-$results = $userRepo->findByEmail($_SESSION['user_email']);
+use Models\Wallet;
+$walletObj = new wallet();
+$results = $walletObj->findByUserID($_SESSION['user_id']);
 ?>
 <main class="main-content">
     <header>
@@ -19,11 +19,12 @@ $results = $userRepo->findByEmail($_SESSION['user_email']);
                 <i class="ri-money-dollar-circle-line" style="font-size:1.5rem; color:var(--primary);"></i>
             </div>
             <p class="stat-label" style="margin-bottom:1rem;">Définissez votre limite de dépenses pour ce mois.</p>
-            <form>
+            <form action='../../Controllers/editBudget.php' method='POST'>
                 <div class="form-group">
                     <label>Montant du budget (MAD)</label>
                     <div style="display:flex; gap:10px;">
-                        <input type="number" value="<?= $results['id'] ?>">
+                        <input type="text" name='userId' value="<?= $results['users_id'] ?>" hidden>
+                        <input type="number" name='budget' value="<?= $results['budget'] ?>">
                         <button class="btn btn-primary">Mettre à jour</button>
                     </div>
                 </div>
