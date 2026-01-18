@@ -5,8 +5,8 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 
 use Models\Security;
-use Repositories\UserRepository;
 use Models\User;
+use Models\Wallet;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'] ?? '';
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     try {
-        $userRepo = new UserRepository();
+        $userRepo = new User();
         $user = $userRepo->authenticate($email, $password);
 
         if ($user) {
@@ -30,7 +30,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_name'] = $user['name'];
             $_SESSION['user_email'] = $user['email'];
             $_SESSION['created_at'] = $user['created_at'];
-            $user = new User($user['id'] , $user['name'] , $user['email'] , $user['created_at']);
+            
+            $walletObj = new Wallet;
+            $wallet = $walletObj->findByUserID($user['id']);
+            $_SESSION['wallet_id'] = $wallet['id'];
+
             header('Location: ../../app/views/main/dashboard.php');
         } else {
             $_SESSION['error'] = 'Email ou mot de passe incorrect';

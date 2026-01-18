@@ -3,7 +3,8 @@ session_start();
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use Models\Security;
-use Repositories\UserRepository;
+use Models\User;
+use Models\Wallet;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'] ?? '';
@@ -21,7 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     try {
-        $userRepo = new UserRepository();
+        $userRepo = new User();
+        $walletRepo = new wallet();
         
         // Check if email already exists
         if ($userRepo->emailExists($email)) {
@@ -32,6 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Create user
         if ($userRepo->createUser($name, $email, $password)) {
+            $result = $userRepo->findByEmail($email);
+            $walletRepo->createwallet($result['id'] , 0);
             $_SESSION['success'] = 'Compte créé avec succès. Vous pouvez maintenant vous connecter.';
             header('Location: ../../app/views/auth/login.php');
         } else {
